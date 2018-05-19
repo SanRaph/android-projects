@@ -1,0 +1,162 @@
+apply plugin: 'com.android.application'
+
+//add
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+
+
+
+
+android {
+    compileSdkVersion 27
+
+
+
+
+    defaultConfig {
+        applicationId "com.phyte.sanraphindustries.viso"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'com.android.support:appcompat-v7:27.1.1'
+        implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+        testImplementation 'junit:junit:4.12'
+        androidTestImplementation 'com.android.support.test:runner:1.0.2'
+        androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+        //added
+        implementation rootProject.ext.supportAppcompatV7
+        implementation rootProject.ext.supportDesign
+        implementation rootProject.ext.supportCardView
+        implementation rootProject.ext.supportRecyclerView
+
+        implementation rootProject.ext.basicProject
+        implementation rootProject.ext.bottomBar
+        implementation rootProject.ext.commonAdapter
+        implementation rootProject.ext.materialEditText
+        implementation rootProject.ext.materialDialog
+        implementation rootProject.ext.materialSpinner
+        implementation rootProject.ext.sublimePicker
+        implementation rootProject.ext.mpAndroidChart
+        implementation rootProject.ext.glide
+
+        implementation rootProject.ext.sqlbrite
+        implementation rootProject.ext.rxJava
+        implementation rootProject.ext.rxAndroid
+        implementation rootProject.ext.rxBinding
+
+        implementation rootProject.ext.butterknife
+        implementation rootProject.ext.dagger2
+        annotationProcessor rootProject.ext.butterknifeCompiler
+        annotationProcessor rootProject.ext.dagger2Compiler
+
+        implementation rootProject.ext.umeng
+        implementation rootProject.ext.pgyer
+
+    }
+
+}
+
+
+
+
+
+/**
+ apply plugin: 'com.android.application'
+
+ Properties properties = new Properties()
+ properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+ android {
+ compileSdkVersion rootProject.ext.android.compileSdkVersion
+ buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+ defaultConfig {
+ applicationId rootProject.ext.android.applicationId
+ minSdkVersion rootProject.ext.android.minSdkVersion
+ targetSdkVersion rootProject.ext.android.targetSdkVersion
+ versionCode rootProject.ext.android.versionCode
+ versionName rootProject.ext.android.versionName
+
+ resConfigs "zh"
+
+ manifestPlaceholders = [PGYER_APPID  : properties.getProperty("PGYER_APPID"),
+ UMENG_APPKEY : properties.getProperty("UMENG_APPKEY"),
+ UMENG_CHANNEL: "pgyer",
+ APPLICATION_ID: rootProject.ext.android.applicationId]
+
+ //vectorDrawables.useSupportLibrary = true
+ }
+ buildTypes {
+ release {
+ minifyEnabled false
+ proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+ }
+ }
+
+ lintOptions {
+ abortOnError false
+ }
+ }
+ configurations.all {
+ resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+ def requested = details.requested
+ if (requested.group == 'com.android.support') {
+ if (!requested.name.startsWith("multidex")) {
+ details.useVersion '25.3.1'
+ }
+ }
+ }
+ }
+ dependencies {
+ compile fileTree(dir: 'libs', include: ['*.jar'])
+ compile rootProject.ext.supportAppcompatV7
+ compile rootProject.ext.supportDesign
+ compile rootProject.ext.supportCardView
+ compile rootProject.ext.supportRecyclerView
+
+ compile rootProject.ext.basicProject
+ compile rootProject.ext.bottomBar
+ compile rootProject.ext.commonAdapter
+ compile rootProject.ext.materialEditText
+ compile rootProject.ext.materialDialog
+ compile rootProject.ext.materialSpinner
+ compile rootProject.ext.sublimePicker
+ compile rootProject.ext.mpAndroidChart
+ compile rootProject.ext.glide
+
+ compile rootProject.ext.sqlbrite
+ compile rootProject.ext.rxJava
+ compile rootProject.ext.rxAndroid
+ compile rootProject.ext.rxBinding
+
+ compile rootProject.ext.butterknife
+ compile rootProject.ext.dagger2
+ annotationProcessor rootProject.ext.butterknifeCompiler
+ annotationProcessor rootProject.ext.dagger2Compiler
+
+ compile rootProject.ext.umeng
+ compile rootProject.ext.pgyer
+ }
+ **/
